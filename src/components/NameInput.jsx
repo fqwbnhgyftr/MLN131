@@ -19,9 +19,12 @@ export default function NameInput({ onStart }) {
   return (
     <div className="container" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div className="card-panel animate-fade-in-up" style={{ padding: '3rem', maxWidth: '500px', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '0.5rem', color: 'var(--primary-red)' }}>ĐẠI ĐOÀN KẾT</h1>
+        <div style={{ fontSize: '3rem', marginBottom: '0.75rem', letterSpacing: '0.25rem' }}>
+          🕊️ ✝️ ☸️ 🌙
+        </div>
+        <h1 style={{ fontSize: '3rem', marginBottom: '0.5rem', color: 'var(--primary-red)' }}>HÒA HỢP</h1>
         <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', marginBottom: '2.5rem', fontFamily: 'var(--font-display)' }}>
-          Hành trình tìm đường cứu nước
+          Hành trình kiến tạo hòa hợp tôn giáo
         </p>
 
         <div style={{ position: 'relative', marginBottom: '2rem' }}>
@@ -33,7 +36,7 @@ export default function NameInput({ onStart }) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Nhập tên người chiến sĩ..."
+            placeholder="Nhập tên nhà lãnh đạo..."
             style={{
               width: '100%',
               padding: '1rem 1rem 1rem 3.5rem',
@@ -72,7 +75,7 @@ export default function NameInput({ onStart }) {
         </button>
 
         <p style={{ marginTop: '2rem', fontSize: '0.875rem', color: 'var(--text-muted)', opacity: 0.7 }}>
-          *Một trò chơi mô phỏng dựa trên tư tưởng Hồ Chí Minh
+          *Trò chơi mô phỏng về quản lý hòa hợp tôn giáo tại Việt Nam
         </p>
       </div>
     </div>

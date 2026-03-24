@@ -20,7 +20,12 @@ export default function Leaderboard({ onClose }) {
     }
     setLoading(false);
   };
-
+  const statLabel = {
+    people: 'Hòa hợp tôn giáo',
+    class:  'Lòng tin tín đồ',
+    idea:   'Giáo lý & Đối thoại',
+    intl:   'Ổn định cộng đồng'
+  };
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -82,8 +87,8 @@ export default function Leaderboard({ onClose }) {
         <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
           {[
             { id: 'all', label: 'Tất cả' },
-            { id: 'victories', label: 'Chiến thắng' },
-            { id: 'defeats', label: 'Thất bại' }
+            { id: 'victories', label: '🕊️ Hòa hợp thành công' },
+            { id: 'defeats', label: '💔 Đã sụp đổ' }
           ].map((f) => (
             <button
               key={f.id}
@@ -129,17 +134,16 @@ export default function Leaderboard({ onClose }) {
                   gap: '1rem',
                   alignItems: 'center',
                   padding: '1rem',
-                  background: idx < 3 
-                    ? `linear-gradient(135deg, ${
-                        idx === 0 ? '#FFD700' : idx === 1 ? '#C0C0C0' : '#CD7F32'
-                      }, rgba(255,255,255,0.8))` 
+                  background: idx < 3
+                    ? `linear-gradient(135deg, ${idx === 0 ? '#FFD700' : idx === 1 ? '#C0C0C0' : '#CD7F32'
+                    }, rgba(255,255,255,0.8))`
                     : 'rgba(0,0,0,0.03)',
                   borderRadius: 'var(--radius-sm)',
                   borderLeft: entry.is_victory ? '4px solid var(--success)' : '4px solid var(--danger)'
                 }}
               >
-                <div style={{ 
-                  fontSize: idx < 3 ? '1.2rem' : '1rem', 
+                <div style={{
+                  fontSize: idx < 3 ? '1.2rem' : '1rem',
                   fontWeight: '700',
                   color: idx < 3 ? '#333' : 'var(--text-muted)',
                   textAlign: 'center'
@@ -152,7 +156,9 @@ export default function Leaderboard({ onClose }) {
                     {entry.player_name}
                   </div>
                   <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                    {entry.is_victory ? '✓ Chiến thắng' : `✗ ${entry.failed_stat || 'Thất bại'}`}
+                    {entry.is_victory
+                      ? '🕊️ Hòa hợp thành công'
+                      : `💔 Sụp đổ: ${statLabel[entry.failed_stat] || 'Không rõ'}`}
                   </div>
                 </div>
 
@@ -165,27 +171,27 @@ export default function Leaderboard({ onClose }) {
                   </div>
                 </div>
 
-                <div style={{ 
-                  display: 'grid', 
-                  gridTemplateColumns: 'repeat(2, 1fr)', 
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2, 1fr)',
                   gap: '0.5rem',
                   fontSize: '0.75rem',
                   minWidth: '120px'
                 }}>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ color: 'var(--text-muted)' }}>Dân</div>
+                    <div style={{ color: 'var(--text-muted)' }}>Hòa</div>
                     <div style={{ fontWeight: '600' }}>{entry.final_people}</div>
                   </div>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ color: 'var(--text-muted)' }}>Giai</div>
+                    <div style={{ color: 'var(--text-muted)' }}>Tin</div>
                     <div style={{ fontWeight: '600' }}>{entry.final_class}</div>
                   </div>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ color: 'var(--text-muted)' }}>Tư</div>
+                    <div style={{ color: 'var(--text-muted)' }}>Lý</div>
                     <div style={{ fontWeight: '600' }}>{entry.final_idea}</div>
                   </div>
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ color: 'var(--text-muted)' }}>Quốc</div>
+                    <div style={{ color: 'var(--text-muted)' }}>Ổn</div>
                     <div style={{ fontWeight: '600' }}>{entry.final_intl}</div>
                   </div>
                 </div>
@@ -194,8 +200,8 @@ export default function Leaderboard({ onClose }) {
           </div>
         )}
 
-        <div style={{ 
-          marginTop: '2rem', 
+        <div style={{
+          marginTop: '2rem',
           padding: '1rem',
           background: 'rgba(0,0,0,0.03)',
           borderRadius: 'var(--radius-sm)',

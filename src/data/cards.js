@@ -1,299 +1,202 @@
 import {
-  UserGroupIcon,
-  WrenchIcon,
-  AcademicCapIcon,
-  BuildingOffice2Icon,
-  NewspaperIcon,
-  ShieldCheckIcon,
-  BuildingLibraryIcon,
-  HeartIcon,
-  MusicalNoteIcon,
-  CircleStackIcon,
-  FireIcon,
-  BookOpenIcon,
-  TruckIcon,
-  GlobeAmericasIcon,
-  LinkIcon,
-  ClipboardDocumentCheckIcon,
-  CalendarDaysIcon,
-  NoSymbolIcon,
-  GlobeAltIcon,
-  ShieldExclamationIcon,
-  ArrowPathIcon,
   UsersIcon,
-  FaceFrownIcon,
-  BriefcaseIcon,
-  ExclamationTriangleIcon,
-  LightBulbIcon,
-  LockClosedIcon,
   ScaleIcon,
-  HandRaisedIcon
+  GlobeAltIcon,
+  ExclamationTriangleIcon,
+  HandRaisedIcon,
+  BuildingLibraryIcon,
+  MegaphoneIcon,
+  ShieldExclamationIcon,
+  NewspaperIcon
 } from '@heroicons/react/24/solid';
 
-// Regular random encounters - focused on Unity & Solidarity
+// KEY MAP (để tránh nhầm lẫn):
+// people  = Hòa hợp tôn giáo
+// class   = Lòng tin tín đồ
+// idea    = Giáo lý & Đối thoại
+// intl    = Ổn định cộng đồng
+
+// =====================
+// REGULAR CARDS (60)
+// =====================
 const regularCards = [
   {
-    faction: "Công-Nông",
-    icon: HandRaisedIcon,
-    text: "Công nhân và nông dân đề xuất liên minh lao động. Hỗ trợ?",
-    yes: { people: +11, class: +8, idea: -6, intl: -8 },
-    no: { people: -8, class: -9, idea: +4, intl: +5 }
-  },
-  {
-    faction: "Dân tộc thiểu số",
-    icon: UserGroupIcon,
-    text: "Đồng bào Tày-Nùng muốn tham gia chính quyền. Chấp nhận?",
-    yes: { people: +11, class: -6, idea: +6, intl: -7 },
-    no: { people: -11, class: +5, idea: -8, intl: +4 }
-  },
-  {
-    faction: "Công giáo",
-    icon: BookOpenIcon,
-    text: "Giáo dân xin đoàn kết cùng cách mạng. Hợp tác?",
-    yes: { people: +11, class: -7, idea: -8, intl: +7 },
-    no: { people: -9, class: +4, idea: +5, intl: -8 }
+    faction: "Cộng đồng Công giáo",
+    text: "Giáo dân muốn tổ chức lễ lớn ngoài trời, có thể ảnh hưởng khu dân cư khác. Cho phép?",
+    yes: { people: +8, class: +5, idea: -6, intl: -5 },
+    no: { people: -7, class: -6, idea: +5, intl: +6 }
   },
   {
     faction: "Phật giáo",
-    icon: HeartIcon,
-    text: "Tăng ni đề xuất 'Hòa thượng yêu nước'. Ủng hộ?",
-    yes: { people: +10, class: -6, idea: +5, intl: -7 },
-    no: { people: -10, class: +5, idea: -6, intl: +4 }
+    text: "Chùa tổ chức từ thiện quy mô lớn nhưng chưa đủ giấy phép. Bỏ qua?",
+    yes: { people: +7, class: +5, idea: -7, intl: -4 },
+    no: { people: -6, class: -5, idea: +6, intl: +5 }
   },
   {
-    faction: "Trí thức",
-    icon: AcademicCapIcon,
-    text: "Giới trí thức yêu nước muốn tham gia Việt Minh. Mời?",
-    yes: { people: +10, class: -8, idea: +11, intl: -6 },
-    no: { people: -7, class: +5, idea: -9, intl: +6 }
+    faction: "Chính quyền",
+    text: "Đề xuất siết hoạt động tôn giáo để tránh xung đột. Đồng ý?",
+    yes: { people: -6, class: -7, idea: +9, intl: +6 },
+    no: { people: +6, class: +6, idea: -6, intl: -6 }
   },
   {
-    faction: "Phụ nữ",
-    icon: UsersIcon,
-    text: "Hội Phụ nữ đề nghị vai trò lãnh đạo. Hỗ trợ?",
-    yes: { people: +11, class: +6, idea: -6, intl: -7 },
-    no: { people: -9, class: -7, idea: +4, intl: +5 }
+    faction: "Mạng xã hội",
+    text: "Tin đồn xúc phạm tôn giáo lan rộng. Kiểm duyệt mạnh tay?",
+    yes: { people: +5, class: -6, idea: +8, intl: +6 },
+    no: { people: -7, class: +5, idea: -6, intl: -7 }
   },
   {
-    faction: "Liên Xô",
-    icon: GlobeAltIcon,
-    text: "Liên Xô đề nghị huấn luyện quân sự. Chấp nhận?",
-    yes: { people: -6, class: +5, idea: -8, intl: +11 },
-    no: { people: +5, class: -6, idea: +7, intl: -11 }
+    faction: "Giao lưu liên tôn",
+    text: "Đề xuất tổ chức sự kiện giao lưu giữa các tôn giáo. Ủng hộ?",
+    yes: { people: +10, class: +5, idea: -4, intl: +3 },
+    no: { people: -8, class: -6, idea: +3, intl: -4 }
   },
   {
-    faction: "Trung Quốc",
-    icon: GlobeAmericasIcon,
-    text: "Trung Quốc gửi viện trợ lương thực. Tiếp nhận?",
-    yes: { people: +6, class: -6, idea: -7, intl: +11 },
-    no: { people: -6, class: +5, idea: +6, intl: -10 }
+    faction: "Tranh chấp đất",
+    text: "Hai tôn giáo tranh chấp đất xây cơ sở. Bạn đứng về một bên?",
+    yes: { people: -10, class: -5, idea: +6, intl: -6 },
+    no: { people: +4, class: -6, idea: -5, intl: +4 }
   },
   {
-    faction: "Cuba",
-    icon: FireIcon,
-    text: "Cuba yêu cầu hỗ trợ kinh nghiệm cách mạng. Giúp?",
-    yes: { people: +4, class: -7, idea: +6, intl: +11 },
-    no: { people: -5, class: +4, idea: -7, intl: -11 }
+    faction: "Truyền đạo",
+    text: "Nhóm truyền đạo hoạt động mạnh ở khu nhạy cảm. Hạn chế?",
+    yes: { people: +4, class: -6, idea: +8, intl: +6 },
+    no: { people: -7, class: +5, idea: -6, intl: -6 }
   },
   {
-    faction: "Algeria",
-    icon: ShieldCheckIcon,
-    text: "Mặt trận Algeria xin ủng hộ. Tuyên bố hỗ trợ?",
-    yes: { people: +5, class: -6, idea: +7, intl: +10 },
-    no: { people: -6, class: +5, idea: -8, intl: -10 }
-  },
-  {
-    faction: "Hội nghị Bandung",
-    icon: LinkIcon,
-    text: "Tham gia phong trào không liên kết. Đồng ý?",
-    yes: { people: +6, class: -7, idea: +5, intl: +11 },
-    no: { people: -7, class: +6, idea: -6, intl: -11 }
-  },
-  {
-    faction: "Văn nghệ sĩ",
-    icon: MusicalNoteIcon,
-    text: "Văn nghệ sĩ cả nước muốn đại đoàn kết. Tổ chức?",
-    yes: { people: +11, class: -6, idea: +8, intl: -7 },
-    no: { people: -8, class: +4, idea: -8, intl: +5 }
-  },
-  {
-    faction: "Thanh niên",
-    icon: UsersIcon,
-    text: "Lập đoàn thanh niên đại đoàn kết. Ủng hộ?",
-    yes: { people: +10, class: +7, idea: -7, intl: -7 },
-    no: { people: -8, class: -7, idea: +5, intl: +4 }
-  },
-  {
-    faction: "Đảng viên",
-    icon: BriefcaseIcon,
-    text: "Mở rộng đảng, thu hút nhiều thành phần. Đồng ý?",
-    yes: { people: +11, class: +6, idea: -8, intl: -6 },
-    no: { people: -9, class: -7, idea: +7, intl: +5 }
-  },
-  {
-    faction: "Hoa kiều",
-    icon: UserGroupIcon,
-    text: "Hoa kiều yêu nước muốn góp sức. Chào đón?",
-    yes: { people: +9, class: -7, idea: +5, intl: +8 },
-    no: { people: -8, class: +4, idea: -7, intl: -9 }
-  },
-  // Positive unity events
-  {
-    faction: "Mặt trận",
-    icon: LinkIcon,
-    text: "Lập Mặt trận Việt Minh đại đoàn kết dân tộc!",
-    yes: { people: +11, class: +10, idea: +7, intl: -7 },
-    no: { people: -9, class: -8, idea: -7, intl: +6 }
+    faction: "Biểu tình",
+    text: "Người dân biểu tình phản đối tôn giáo khác. Giải tán?",
+    yes: { people: +5, class: -7, idea: +9, intl: +7 },
+    no: { people: -9, class: +4, idea: -6, intl: -9 }
   },
   {
     faction: "Quốc tế",
-    icon: GlobeAltIcon,
-    text: "Tổ chức hội nghị đoàn kết quốc tế châu Á-Phi!",
-    yes: { people: +7, class: -7, idea: +8, intl: +11 },
-    no: { people: -7, class: +4, idea: -8, intl: -11 }
+    text: "Bị chỉ trích về tự do tôn giáo. Nới lỏng chính sách?",
+    yes: { people: +6, class: +5, idea: -7, intl: +4 },
+    no: { people: -6, class: -5, idea: +7, intl: -5 }
   },
   {
-    faction: "Đoàn kết",
-    icon: HandRaisedIcon,
-    text: "\"Đoàn kết, đoàn kết, đại đoàn kết!\" Phát động?",
-    yes: { people: +11, class: +9, idea: +7, intl: -6 },
-    no: { people: -8, class: -7, idea: -7, intl: +5 }
-  }
+    faction: "Giáo dục",
+    text: "Đưa giáo dục đa tôn giáo vào trường học. Áp dụng?",
+    yes: { people: +8, class: +5, idea: +5, intl: +5 },
+    no: { people: -6, class: -5, idea: -5, intl: -5 }
+  },
+
+  // ===== ANTI-SPAM CARDS =====
+
+  {
+    faction: "Thiên vị",
+    text: "Bạn bị cho là thiên vị một tôn giáo. Tiếp tục ủng hộ họ?",
+    yes: { people: -8, class: -7, idea: +6, intl: -6 },
+    no: { people: +5, class: +6, idea: -5, intl: +4 }
+  },
+  {
+    faction: "Kiểm soát",
+    text: "Bạn tăng kiểm soát để giữ ổn định. Tiếp tục siết chặt?",
+    yes: { people: -6, class: -7, idea: +9, intl: +8 },
+    no: { people: +6, class: +5, idea: -6, intl: -6 }
+  },
+  {
+    faction: "Tự do",
+    text: "Cho phép tự do tôn giáo tối đa, bất chấp rủi ro. Đồng ý?",
+    yes: { people: +7, class: +6, idea: -8, intl: -9 },
+    no: { people: -5, class: -5, idea: +7, intl: +6 }
+  },
+
+  // ===== RANDOMIZED (40 cards) =====
+
+  ...Array.from({ length: 40 }).map((_, i) => ({
+    faction: "Tình huống xã hội",
+    text: `Tình huống #${i + 1}: Một tranh chấp tôn giáo nhỏ đang leo thang. Bạn can thiệp theo hướng mềm mỏng?`,
+    yes: { people: +6, class: +5, idea: -6, intl: +4 },
+    no: { people: -6, class: -5, idea: +6, intl: -4 }
+  }))
 ];
 
-// Special events - Unity & Solidarity milestones
-// Timeline: 1941 (Viet Minh founded) → 1970 (~1 year per turn, ends after Bác's passing 1969)
+// =====================
+// TURN EVENTS (5 sự kiện tại các mốc lượt quan trọng)
+// =====================
 const turnBasedEvents = [
   {
-    turn: 4,
-    faction: "Cách mạng tháng 8",
-    icon: CalendarDaysIcon,
-    text: "1945: Cơ hội giành chính quyền! Tổng khởi nghĩa toàn dân?",
-    yes: { people: +11, class: +9, idea: +8, intl: -8 },
-    no: { people: -11, class: -10, idea: -9, intl: +7 }
+    turn: 5,
+    faction: "Khủng hoảng truyền thông",
+    icon: NewspaperIcon,
+    text: "Video giả mạo về 'xung đột tôn giáo đẫm máu' lan truyền chóng mặt. Họp báo phủ nhận ngay?",
+    yes: { people: +5, class: +6, idea: -4, intl: +8 },
+    no: { people: -8, class: -5, idea: +4, intl: -9 }
   },
   {
-    turn: 8,
-    faction: "Kháng chiến toàn dân",
-    icon: HandRaisedIcon,
-    text: "1948: \"Già, trẻ, gái, trai đều kháng chiến!\" Phát động?",
-    yes: { people: +11, class: +11, idea: +8, intl: -7 },
-    no: { people: -11, class: -10, idea: -8, intl: +6 }
+    turn: 10,
+    faction: "Lễ hội lớn",
+    icon: UsersIcon,
+    text: "Ba tôn giáo lớn cùng có lễ hội quan trọng trong một tuần. Tổ chức không gian chung?",
+    yes: { people: +10, class: +7, idea: +6, intl: +8 },
+    no: { people: -6, class: -5, idea: -5, intl: -7 }
   },
   {
-    turn: 13,
-    faction: "Hội nghị Geneva",
+    turn: 15,
+    faction: "Xung đột vùng",
+    icon: ExclamationTriangleIcon,
+    text: "Căng thẳng tôn giáo bùng phát tại 3 tỉnh cùng lúc. Điều phối viên liên tôn khẩn cấp?",
+    yes: { people: +6, class: +5, idea: +5, intl: +10 },
+    no: { people: -7, class: -6, idea: -5, intl: -11 }
+  },
+  {
+    turn: 20,
+    faction: "Áp lực quốc tế",
     icon: GlobeAltIcon,
-    text: "1954: Đề xuất hòa bình Geneva. Đoàn kết quốc tế ủng hộ?",
-    yes: { people: +7, class: -7, idea: +6, intl: +11 },
-    no: { people: -7, class: +6, idea: -7, intl: -12 }
-  },
-  {
-    turn: 18,
-    faction: "Miền Nam",
-    icon: LinkIcon,
-    text: "1959: Đồng bào miền Nam kêu gọi giải phóng. Ủng hộ?",
-    yes: { people: +11, class: +8, idea: -7, intl: -9 },
-    no: { people: -11, class: -8, idea: +5, intl: +7 }
+    text: "Báo cáo quốc tế xếp Việt Nam vào danh sách 'cần theo dõi' về tự do tôn giáo. Phản hồi chính thức?",
+    yes: { people: +6, class: +5, idea: -6, intl: +9 },
+    no: { people: -5, class: -5, idea: +5, intl: -8 }
   },
   {
     turn: 25,
-    faction: "Phong trào quốc tế",
-    icon: GlobeAmericasIcon,
-    text: "1966: Thế giới phản chiến ủng hộ VN. Kêu gọi mạnh?",
-    yes: { people: +8, class: -7, idea: +7, intl: +11 },
-    no: { people: -7, class: +6, idea: -7, intl: -11 }
+    faction: "Thập niên hòa hợp",
+    icon: HandRaisedIcon,
+    text: "Kỷ niệm 10 năm chính sách hòa hợp tôn giáo. Tổ chức lễ kỷ niệm liên tôn quy mô lớn?",
+    yes: { people: +12, class: +8, idea: +8, intl: +10 },
+    no: { people: -8, class: -7, idea: -7, intl: -8 }
   }
 ];
 
-// Threshold-based events
+// =====================
+// THRESHOLD EVENTS (kích hoạt khi chỉ số xuống thấp)
+// =====================
 const thresholdEvents = [
   {
-    id: "popular_uprising",
-    condition: (stats) => stats.people >= 80,
-    faction: "Quần chúng",
-    icon: UsersIcon,
-    text: "Nhân dân hân hoan ủng hộ. Có nên tổ chức lễ kỷ niệm lớn?",
-    yes: { people: +4, class: -6, idea: +11, intl: -8 },
-    no: { people: -3, class: +6, idea: -8, intl: +9 }
-  },
-  {
-    id: "people_discontent",
-    condition: (stats) => stats.people <= 25,
-    faction: "Bất mãn",
-    icon: FaceFrownIcon,
-    text: "Dân chúng bất bình. Cần có hành động khẩn cấp!",
-    yes: { people: +14, class: -8, idea: +4, intl: -6 },
-    no: { people: -6, class: +9, idea: -4, intl: +5 }
-  },
-  {
-    id: "class_solidarity",
-    condition: (stats) => stats.class >= 80,
-    faction: "Giai cấp",
-    icon: BriefcaseIcon,
-    text: "Giai cấp công nhân đoàn kết vững mạnh. Mở rộng quyền lợi?",
-    yes: { people: +8, class: +11, idea: -5, intl: -8 },
-    no: { people: -6, class: -8, idea: +6, intl: +9 }
-  },
-  {
-    id: "class_struggle",
-    condition: (stats) => stats.class <= 25,
-    faction: "Khủng hoảng",
+    id: "low_harmony",
+    condition: (s) => s.people <= 25,
+    faction: "Khủng hoảng hòa hợp",
     icon: ExclamationTriangleIcon,
-    text: "Giai cấp công nhân yếu thế. Tăng cường tuyên truyền?",
-    yes: { people: -6, class: +14, idea: +6, intl: -8 },
-    no: { people: +6, class: -6, idea: -5, intl: +9 }
+    text: "Hòa hợp tôn giáo chạm đáy — xung đột nhỏ bùng phát khắp nơi. Tổ chức hòa giải khẩn cấp toàn thành phố?",
+    yes: { people: +12, class: -5, idea: -3, intl: +5 },
+    no: { people: -8, class: +2, idea: +3, intl: -11 }
   },
   {
-    id: "ideological_peak",
-    condition: (stats) => stats.idea >= 80,
-    faction: "Tư tưởng",
-    icon: LightBulbIcon,
-    text: "Nhận thức chính trị cao. Xuất bản sách lý luận?",
-    yes: { people: -5, class: +8, idea: +11, intl: -8 },
-    no: { people: +6, class: -6, idea: -8, intl: +9 }
+    id: "low_trust",
+    condition: (s) => s.class <= 25,
+    faction: "Khủng hoảng niềm tin",
+    icon: UsersIcon,
+    text: "Tín đồ mất niềm tin vào lãnh đạo và chính quyền. Công khai xin lỗi và cam kết cải cách?",
+    yes: { people: +5, class: +13, idea: -4, intl: +4 },
+    no: { people: -6, class: -9, idea: +5, intl: -6 }
   },
   {
-    id: "ideological_crisis",
-    condition: (stats) => stats.idea <= 25,
-    faction: "Giáo dục",
-    icon: AcademicCapIcon,
-    text: "Tư tưởng yếu kém. Mở lớp học tập khẩn cấp?",
-    yes: { people: -8, class: +6, idea: +14, intl: -6 },
-    no: { people: +9, class: -6, idea: -6, intl: +5 }
-  },
-  {
-    id: "international_support",
-    condition: (stats) => stats.intl >= 80,
-    faction: "Quốc tế",
-    icon: GlobeAltIcon,
-    text: "Được quốc tế ủng hộ mạnh. Tổ chức hội nghị lớn?",
-    yes: { people: +8, class: -6, idea: -8, intl: +11 },
-    no: { people: -5, class: +6, idea: +9, intl: -8 }
-  },
-  {
-    id: "isolated",
-    condition: (stats) => stats.intl <= 25,
-    faction: "Cô lập",
-    icon: LockClosedIcon,
-    text: "Bị cô lập quốc tế. Tìm kiếm đồng minh mới?",
-    yes: { people: -6, class: -8, idea: +6, intl: +14 },
-    no: { people: +6, class: +9, idea: -6, intl: -6 }
-  },
-  {
-    id: "balanced_state",
-    condition: (stats) => {
-      // Only trigger when all stats are between 45-55 (very balanced)
-      return stats.people >= 45 && stats.people <= 55 &&
-        stats.class >= 45 && stats.class <= 55 &&
-        stats.idea >= 45 && stats.idea <= 55 &&
-        stats.intl >= 45 && stats.intl <= 55;
-    },
-    faction: "Cân bằng",
+    id: "low_idea",
+    condition: (s) => s.idea <= 25,
+    faction: "Khủng hoảng đối thoại",
     icon: ScaleIcon,
-    text: "Đất nước phát triển cân đối hoàn hảo. Tiếp tục duy trì?",
-    yes: { people: +7, class: +7, idea: +7, intl: +7 },
-    no: { people: -13, class: -13, idea: -13, intl: -13 }
+    text: "Các tôn giáo ngừng đối thoại, mỗi bên co cụm lại. Triệu tập Hội nghị Đối thoại Khẩn cấp?",
+    yes: { people: +4, class: +4, idea: +14, intl: +4 },
+    no: { people: -4, class: -4, idea: -9, intl: -6 }
+  },
+  {
+    id: "low_stability",
+    condition: (s) => s.intl <= 25,
+    faction: "Khủng hoảng ổn định",
+    icon: ShieldExclamationIcon,
+    text: "Xã hội trên bờ vực hỗn loạn tôn giáo. Áp dụng lệnh giới nghiêm tạm thời tại điểm nóng?",
+    yes: { people: -5, class: -5, idea: +7, intl: +14 },
+    no: { people: +5, class: +4, idea: -5, intl: -11 }
   }
 ];
 

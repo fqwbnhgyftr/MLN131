@@ -17,40 +17,40 @@ export default function GameOver({ result, playerName, onRestart }) {
   const isVictory = result.isVictory;
 
   const statConfig = {
-    people: { label: 'Đoàn kết dân tộc', icon: UsersIcon, color: '#2E7D32' },
-    class: { label: 'Nội bộ vững mạnh', icon: BriefcaseIcon, color: '#1976D2' },
-    idea: { label: 'Lý tưởng thống nhất', icon: LightBulbIcon, color: '#FBC02D' },
-    intl: { label: 'Đoàn kết quốc tế', icon: GlobeAltIcon, color: '#7B1FA2' }
+    people: { label: 'Hòa hợp tôn giáo', icon: UsersIcon, color: '#2E7D32' },
+    class: { label: 'Lòng tin tín đồ', icon: BriefcaseIcon, color: '#1976D2' },
+    idea: { label: 'Giáo lý & Đối thoại', icon: LightBulbIcon, color: '#FBC02D' },
+    intl: { label: 'Ổn định cộng đồng', icon: GlobeAltIcon, color: '#7B1FA2' }
   };
 
   const getFailureMessage = () => {
     if (result.people <= 0) {
       return {
-        title: "Mất đoàn kết dân tộc",
-        message: "\"Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công.\" - Bác Hồ. Bạn đã không thể đoàn kết các tầng lớp nhân dân, các dân tộc, tôn giáo. Không có đại đoàn kết, không thể có thắng lợi."
+        title: "Hòa hợp tôn giáo sụp đổ",
+        message: "Mâu thuẫn giữa các tôn giáo leo thang không kiểm soát. Khi các cộng đồng không còn tin tưởng nhau, xã hội tan vỡ từ bên trong. Hòa hợp không thể xây dựng bằng áp đặt — chỉ có thể vun đắp bằng lắng nghe."
       };
     }
     if (result.class <= 0) {
       return {
-        title: "Nội bộ tan rã",
-        message: "\"Trong đoàn kết là sức mạnh, ngoài đoàn kết là thất bại.\" Nội bộ công-nông-trí thức tan rã. Khi mất gắn kết nội bộ, cách mạng không thể tiến lên."
+        title: "Tín đồ mất niềm tin",
+        message: "Người dân không còn tin vào sự công tâm của lãnh đạo. Khi lòng tin bị phá vỡ, mọi chính sách đều trở thành nghi kỵ. Niềm tin một khi mất đi, rất khó lấy lại."
       };
     }
     if (result.idea <= 0) {
       return {
-        title: "Mất lý tưởng chung",
-        message: "\"Không có gì quý hơn độc lập tự do.\" Khi không còn lý tưởng chung, nhân dân sẽ lạc lối. Mục tiêu thống nhất là cội nguồn của mọi đoàn kết."
+        title: "Đối thoại hoàn toàn đổ vỡ",
+        message: "Các tôn giáo ngừng lắng nghe nhau, mỗi bên co cụm trong giáo lý của mình. Không có đối thoại, không có hiểu biết chung — và không có hòa hợp. Sự im lặng này đắt hơn mọi xung đột."
       };
     }
     if (result.intl <= 0) {
       return {
-        title: "Cô lập quốc tế",
-        message: "\"Đoàn kết quốc tế là sức mạnh to lớn.\" Một dân tộc nhỏ bé không thể đứng vững nếu cô lập. Cần liên kết với phong trào giải phóng dân tộc và các lực lượng tiến bộ thế giới."
+        title: "Cộng đồng bất ổn",
+        message: "Xung đột lan rộng, trật tự xã hội không còn được duy trì. Ổn định không phải là đàn áp — mà là nền tảng để tự do tín ngưỡng có thể tồn tại bền vững."
       };
     }
     return {
-      title: "Thất bại",
-      message: "Đoàn kết toàn dân tộc và quốc tế là nền tảng của mọi thắng lợi."
+      title: "Sứ mệnh chưa hoàn thành",
+      message: "Hòa hợp tôn giáo là hành trình dài, đòi hỏi kiên nhẫn và công tâm ở mọi quyết định."
     };
   };
 
@@ -67,10 +67,10 @@ export default function GameOver({ result, playerName, onRestart }) {
             <XCircleIcon className="icon-lg" style={{ width: '5rem', height: '5rem', color: 'var(--danger)', margin: '0 auto' }} />
           )}
           <h2 style={{ fontSize: '2.5rem', marginTop: '1rem', marginBottom: '0.5rem', color: isVictory ? 'var(--success)' : 'var(--danger)' }}>
-            {isVictory ? "THẮNG LỢI VẺ VANG!" : "CÁCH MẠNG GẶP KHÓ KHĂN"}
+            {isVictory ? "HÒA HỢP THÀNH CÔNG!" : "SỨ MỆNH CHƯA HOÀN THÀNH"}
           </h2>
           <div style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--text-main)', opacity: 0.8 }}>
-            {isVictory ? "Độc lập - Tự do - Hạnh phúc" : failure.title.toUpperCase()}
+            {isVictory ? "Tôn trọng — Lắng nghe — Đồng hành" : failure.title.toUpperCase()}
           </div>
         </div>
 
@@ -97,7 +97,7 @@ export default function GameOver({ result, playerName, onRestart }) {
 
         <p style={{ fontSize: '1.1rem', fontStyle: 'italic', marginBottom: '2.5rem', lineHeight: '1.6', color: 'var(--text-muted)' }}>
           {isVictory
-            ? "\"Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công.\" - Chủ tịch Hồ Chí Minh. Bạn đã thể hiện được tinh thần đoàn kết toàn dân tộc và quốc tế, giữ vững độc lập chủ quyền!"
+            ? "Bạn đã dẫn dắt cộng đồng vượt qua 30 thử thách mà không để tôn giáo nào bị bỏ lại phía sau. Đây là minh chứng rằng hòa hợp không phải là điều không tưởng — mà là lựa chọn được thực hiện mỗi ngày."
             : failure.message}
         </p>
 
@@ -121,7 +121,7 @@ export default function GameOver({ result, playerName, onRestart }) {
           onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
         >
           <ArrowPathIcon className="icon-sm" />
-          Phát động lại phong trào
+          Bắt đầu lại hành trình
         </button>
 
         <button

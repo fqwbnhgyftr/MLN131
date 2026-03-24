@@ -16,29 +16,29 @@ const clamp = (v) => Math.max(0, Math.min(100, v));
 
 // Stats Config with educational descriptions - Unity & Solidarity focused
 const statConfig = {
-  people: { 
-    label: 'Đoàn kết dân tộc', 
-    icon: UsersIcon, 
-    color: '#2E7D32',
-    desc: 'Đoàn kết các giai tầng, tôn giáo, dân tộc. "Đoàn kết là sức mạnh vô địch" - Bác Hồ.'
+  people: {
+    label: 'Hòa hợp tôn giáo',
+    icon: UsersIcon,
+    color: '#C0392B',          // đỏ trầm — màu Phật giáo/Công giáo
+    desc: 'Mức độ chung sống hòa bình giữa Phật, Công giáo, Tin lành, Cao Đài, Hòa Hảo...'
   },
-  class: { 
-    label: 'Nội bộ vững mạnh', 
-    icon: BriefcaseIcon, 
-    color: '#1976D2',
-    desc: 'Sự gắn kết nội bộ giữa công-nông-trí. Đảm bảo sức mạnh từ bên trong.'
+  class: {
+    label: 'Lòng tin tín đồ',
+    icon: HandThumbUpIcon,
+    color: '#1565C0',          // xanh dương — tượng trưng niềm tin
+    desc: 'Tín đồ các tôn giáo tin tưởng vào sự công tâm của chính quyền địa phương'
   },
-  idea: { 
-    label: 'Lý tưởng thống nhất', 
-    icon: LightBulbIcon, 
-    color: '#FBC02D',
-    desc: 'Mục tiêu chung: Độc lập, tự do, hạnh phúc. "Không có gì quý hơn độc lập tự do."'
+  idea: {
+    label: 'Giáo lý & Đối thoại',
+    icon: LightBulbIcon,
+    color: '#F57F17',          // vàng — ánh sáng giác ngộ
+    desc: 'Khả năng các tôn giáo đối thoại, tìm điểm chung trong giáo lý và thực hành'
   },
-  intl: { 
-    label: 'Đoàn kết quốc tế', 
-    icon: GlobeAltIcon, 
-    color: '#7B1FA2',
-    desc: 'Liên kết với phong trào giải phóng thế giới. "Đoàn kết quốc tế là sức mạnh to lớn."'
+  intl: {
+    label: 'Ổn định cộng đồng',
+    icon: GlobeAltIcon,
+    color: '#4A235A',          // tím — màu tâm linh
+    desc: 'Mức độ ổn định trong quan hệ liên tôn giáo, tránh xung đột lan rộng'
   }
 };
 
@@ -56,52 +56,68 @@ const formatChange = (value) => {
 // Achievement Definitions
 const achievementDefs = [
   {
-    id: 'great_unity',
-    name: 'Đại đoàn kết',
+    id: 'great_harmony',
+    name: 'Đại hòa hợp',
     desc: 'Giữ tất cả chỉ số trên 60 đến lượt 15',
-    icon: '🤝'
+    icon: '🕊️'
+    // Cách đạt: Không thiên vị bất kỳ tôn giáo nào trong 15 lượt đầu,
+    // cân bằng các quyết định giữa Phật giáo, Công giáo và các phái khác.
   },
   {
-    id: 'peoples_hero',
-    name: 'Anh hùng dân tộc',
-    desc: 'Đoàn kết dân tộc đạt 80+ ở lượt 20',
-    icon: '⭐'
+    id: 'shepherd',
+    name: 'Người chăn dắt nhân từ',
+    desc: 'Lòng tin tín đồ (class) đạt 80+ ở lượt 20',
+    icon: '✝️'
+    // Cách đạt: Ưu tiên các lựa chọn bảo vệ quyền thực hành tín ngưỡng,
+    // tránh các quyết định gây cảm giác kỳ thị hoặc áp đặt.
   },
   {
-    id: 'class_solidarity',
-    name: 'Công-nông liên minh',
-    desc: 'Nội bộ vững mạnh đạt 75+ ở lượt 18',
-    icon: '✊'
+    id: 'dharma_keeper',
+    name: 'Hộ Pháp',
+    desc: 'Giáo lý & Đối thoại (idea) đạt 75+ ở lượt 18',
+    icon: '🪷'
+    // Cách đạt: Đồng ý với các sự kiện thúc đẩy hội thảo liên tôn,
+    // ủng hộ không gian đối thoại giữa các lãnh đạo tôn giáo.
   },
   {
-    id: 'international_comrade',
-    name: 'Chiến hữu quốc tế',
-    desc: 'Đoàn kết quốc tế đạt 70+ ở lượt 22',
-    icon: '🌏'
+    id: 'unity_bridge',
+    name: 'Cầu nối liên tôn',
+    desc: 'Ổn định cộng đồng (intl) đạt 70+ ở lượt 22',
+    icon: '🌉'
+    // Cách đạt: Giải quyết ổn thỏa các xung đột đất đai/lễ hội,
+    // tránh để sự kiện ngưỡng leo thang thành bạo lực.
   },
   {
-    id: 'balanced_path',
-    name: 'Con đường cân bằng',
-    desc: 'Tất cả chỉ số trong khoảng 15 điểm ở lượt 20',
+    id: 'balanced_faith',
+    name: 'Cân bằng đức tin',
+    desc: 'Tất cả chỉ số trong khoảng 15 điểm nhau ở lượt 20',
     icon: '⚖️'
+    // Cách đạt: Không đánh đổi cực đoan — ví dụ không hy sinh
+    // "Lòng tin tín đồ" để đổi lấy "Ổn định cộng đồng" quá nhiều.
   },
   {
     id: 'survivor',
-    name: 'Chiến thắng lịch sử',
-    desc: 'Vượt qua 30 lượt chiến đấu',
+    name: 'Vượt thử thách lịch sử',
+    desc: 'Dẫn dắt cộng đồng qua 30 lượt biến cố',
     icon: '🏆'
+    // Cách đạt: Đơn giản là sống sót — không để bất kỳ chỉ số nào về 0.
   },
   {
-    id: 'steadfast_leader',
-    name: 'Lãnh đạo kiên định',
-    desc: 'Không có chỉ số nào giảm xuống dưới 20 đến lượt 25',
+    id: 'steadfast_faith',
+    name: 'Đức tin bền vững',
+    desc: 'Không chỉ số nào xuống dưới 20 đến lượt 25',
     icon: '🛡️'
+    // Cách đạt: Ưu tiên các lựa chọn "phòng thủ" — ngăn suy giảm
+    // hơn là đánh cược để tăng cao một chỉ số duy nhất.
   },
   {
-    id: 'ideological_beacon',
-    name: 'Ngọn đuốc tư tưởng',
-    desc: 'Lý tưởng thống nhất đạt 85+ ở lượt 15',
-    icon: '💡'
+    id: 'enlightened',
+    name: 'Giác ngộ',
+    desc: 'Giáo lý & Đối thoại (idea) đạt 85+ ở lượt 15',
+    icon: '☸️'
+    // Cách đạt: Trong 15 lượt đầu, liên tục chọn các lựa chọn
+    // tăng idea — thường là những lựa chọn ủng hộ giáo dục tâm linh,
+    // hội thảo liên tôn, xuất bản kinh sách chung.
   }
 ];
 
@@ -255,7 +271,7 @@ export default function Game({ onGameOver }) {
     people: 0, class: 0, idea: 0, intl: 0
   });
   const [pendingPenaltyWarning, setPendingPenaltyWarning] = useState(null);
-  
+
   // New: Decision history, feedback, achievements
   const [decisionHistory, setDecisionHistory] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
@@ -272,10 +288,10 @@ export default function Game({ onGameOver }) {
   // Logic Helpers (Identical to before)
   const applyStatDecay = (currentStats, penalties) => {
     const decayed = { ...currentStats };
-    decayed.people = clamp(decayed.people - 2 + penalties.people);
-    decayed.class = clamp(decayed.class - 2 + penalties.class);
-    decayed.idea = clamp(decayed.idea - 2 + penalties.idea);
-    decayed.intl = clamp(decayed.intl - 3 + penalties.intl);
+    decayed.people = clamp(decayed.people - 3);
+    decayed.class = clamp(decayed.class - 3);
+    decayed.idea = clamp(decayed.idea - 3);
+    decayed.intl = clamp(decayed.intl - 4);
     return decayed;
   };
 
@@ -294,10 +310,21 @@ export default function Game({ onGameOver }) {
       penalized.idea = clamp(penalized.idea - 4);
       penalized.class = clamp(penalized.class - 3);
     }
-    if (penalized.people > 85) penalized.people = clamp(penalized.people - 2);
-    if (penalized.class > 85) penalized.class = clamp(penalized.class - 2);
-    if (penalized.idea > 85) penalized.idea = clamp(penalized.idea - 2);
-    if (penalized.intl > 85) penalized.intl = clamp(penalized.intl - 2);
+    if (penalized.people > 75) {
+      penalized.class = clamp(penalized.class - 4);
+    }
+
+    if (penalized.idea > 75) {
+      penalized.people = clamp(penalized.people - 5);
+    }
+
+    if (penalized.intl > 75) {
+      penalized.class = clamp(penalized.class - 3);
+    }
+
+    if (penalized.class > 75) {
+      penalized.idea = clamp(penalized.idea - 3);
+    }
     return penalized;
   };
 
@@ -331,58 +358,90 @@ export default function Game({ onGameOver }) {
   // Check and unlock achievements
   const checkAchievements = (currentStats, currentTurns) => {
     const newAchievements = [...achievements];
-    
-    // Great Unity - all stats above 60 at turn 15
-    if (currentTurns === 15 && !achievements.includes('great_unity')) {
-      if (currentStats.people >= 60 && currentStats.class >= 60 && 
-          currentStats.idea >= 60 && currentStats.intl >= 60) {
-        newAchievements.push('great_unity');
-      }
+
+    // 🕊️ Đại hòa hợp — tất cả 4 stats >= 60 tại đúng turn 15
+    if (
+      currentTurns === 15 &&
+      !newAchievements.includes('great_harmony') &&
+      currentStats.people >= 60 &&
+      currentStats.class >= 60 &&
+      currentStats.idea >= 60 &&
+      currentStats.intl >= 60
+    ) {
+      newAchievements.push('great_harmony');
     }
-    
-    // People's Hero - people stat 80+ at turn 20
-    if (currentTurns === 20 && currentStats.people >= 80 && !achievements.includes('peoples_hero')) {
-      newAchievements.push('peoples_hero');
+
+    // ✝️ Người chăn dắt nhân từ — class >= 80 tại turn 20
+    if (
+      currentTurns === 20 &&
+      !newAchievements.includes('shepherd') &&
+      currentStats.class >= 80
+    ) {
+      newAchievements.push('shepherd');
     }
-    
-    // Class Solidarity - class stat 75+ at turn 18
-    if (currentTurns === 18 && currentStats.class >= 75 && !achievements.includes('class_solidarity')) {
-      newAchievements.push('class_solidarity');
+
+    // 🪷 Hộ Pháp — idea >= 75 tại turn 18
+    if (
+      currentTurns === 18 &&
+      !newAchievements.includes('dharma_keeper') &&
+      currentStats.idea >= 75
+    ) {
+      newAchievements.push('dharma_keeper');
     }
-    
-    // International Comrade - intl stat 70+ at turn 22
-    if (currentTurns === 22 && currentStats.intl >= 70 && !achievements.includes('international_comrade')) {
-      newAchievements.push('international_comrade');
+
+    // 🌉 Cầu nối liên tôn — intl >= 70 tại turn 22
+    if (
+      currentTurns === 22 &&
+      !newAchievements.includes('unity_bridge') &&
+      currentStats.intl >= 70
+    ) {
+      newAchievements.push('unity_bridge');
     }
-    
-    // Balanced Path - all stats within 15 points at turn 20
-    if (currentTurns === 20 && !achievements.includes('balanced_path')) {
+
+    // ⚖️ Cân bằng đức tin — max - min <= 15 tại turn 20
+    if (
+      currentTurns === 20 &&
+      !newAchievements.includes('balanced_faith')
+    ) {
       const values = Object.values(currentStats);
-      const max = Math.max(...values);
-      const min = Math.min(...values);
-      if (max - min <= 15) {
-        newAchievements.push('balanced_path');
+      if (Math.max(...values) - Math.min(...values) <= 15) {
+        newAchievements.push('balanced_faith');
       }
     }
-    
-    // Survivor - survive 30 turns (victory)
-    if (currentTurns === 30 && !achievements.includes('survivor')) {
+
+    // 🏆 Vượt thử thách lịch sử — đạt turn 30 (xử lý trong onGameOver,
+    // nhưng check ở đây phòng trường hợp turn 30 được gọi trước đó)
+    if (
+      currentTurns === 30 &&
+      !newAchievements.includes('survivor')
+    ) {
       newAchievements.push('survivor');
     }
-    
-    // Steadfast Leader - no stat below 20 until turn 25
-    if (currentTurns === 25 && !achievements.includes('steadfast_leader')) {
-      if (currentStats.people >= 20 && currentStats.class >= 20 && 
-          currentStats.idea >= 20 && currentStats.intl >= 20) {
-        newAchievements.push('steadfast_leader');
-      }
+
+    // 🛡️ Đức tin bền vững — tất cả stats >= 20 tại turn 25
+    if (
+      currentTurns === 25 &&
+      !newAchievements.includes('steadfast_faith') &&
+      currentStats.people >= 20 &&
+      currentStats.class >= 20 &&
+      currentStats.idea >= 20 &&
+      currentStats.intl >= 20
+    ) {
+      newAchievements.push('steadfast_faith');
     }
-    
-    // Ideological Beacon - idea stat 85+ at turn 15
-    if (currentTurns === 15 && currentStats.idea >= 85 && !achievements.includes('ideological_beacon')) {
-      newAchievements.push('ideological_beacon');
+
+    // ☸️ Giác ngộ — idea >= 85 tại turn 15
+    // Note: check này và 'great_harmony' đều ở turn 15 — cả hai đều
+    // được evaluate trong cùng một lần gọi, không xung đột nhau.
+    if (
+      currentTurns === 15 &&
+      !newAchievements.includes('enlightened') &&
+      currentStats.idea >= 85
+    ) {
+      newAchievements.push('enlightened');
     }
-    
+
+    // Chỉ update state nếu thực sự có achievement mới
     if (newAchievements.length > achievements.length) {
       setAchievements(newAchievements);
       setShowAchievement(true);
@@ -390,7 +449,6 @@ export default function Game({ onGameOver }) {
     }
   };
 
-  // Main Logic to Apply Choice
   // Main Logic to Apply Choice
   const handleChoice = (agree) => {
     // 1. Check Penalty Warning
@@ -457,7 +515,7 @@ export default function Game({ onGameOver }) {
       newStats: finalStats
     };
     setDecisionHistory(prev => [decision, ...prev].slice(0, 10)); // Keep last 10
-    
+
     // Check achievements
     checkAchievements(finalStats, newTurns);
 
@@ -500,7 +558,6 @@ export default function Game({ onGameOver }) {
             <ClockIcon className="icon-md" />
             <span style={{ fontWeight: '700', fontSize: '1.1rem' }}>Lượt {turns}/30</span>
           </div>
-          <div style={{ fontSize: '0.9rem', opacity: 0.9 }}>Năm {1941 + turns}</div>
         </div>
 
         {[5, 10, 15, 20, 25].includes(turns + 1) && (
@@ -674,7 +731,7 @@ export default function Game({ onGameOver }) {
       </div>
 
     </div>
-    
+
   );
-  
+
 }
